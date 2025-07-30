@@ -3,16 +3,16 @@
   command = "npm run build"
   publish = "dist"
 
-# Proxy rule for the API. 
-# This rule correctly proxies requests.
+# Proxy rule for the API.
+# This rule MUST come BEFORE the general SPA rule.
 [[redirects]]
   from = "/api/*"
-  to = "https://sonuprasad-hillside.hf.space/:splat" # CORRECTED: Removed the extra /api from the 'to' path
+  to = "https://sonuprasad-hillside.hf.space/api/:splat"
   status = 200
   force = true
 
 # The general redirect rule for the Single Page Application.
-# This MUST come last.
+# This catches all other routes and serves the main page.
 [[redirects]]
   from = "/*"
   to = "/index.html"
