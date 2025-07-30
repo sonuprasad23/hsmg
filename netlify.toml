@@ -3,16 +3,16 @@
   command = "npm run build"
   publish = "dist"
 
-# Proxy rule for the API. This MUST come BEFORE the general SPA rule.
-# It tells Netlify to forward any request starting with /api/ to your backend.
+# Proxy rule for the API. 
+# This rule correctly proxies requests.
 [[redirects]]
   from = "/api/*"
-  to = "https://your-hf-username-your-space.hf.space/api/:splat"
+  to = "https://sonuprasad-hillside.hf.space/:splat" # CORRECTED: Removed the extra /api from the 'to' path
   status = 200
-  force = true # Ensures this rule is always applied
+  force = true
 
 # The general redirect rule for the Single Page Application.
-# This catches all other routes and serves the main page.
+# This MUST come last.
 [[redirects]]
   from = "/*"
   to = "/index.html"
